@@ -50,6 +50,14 @@ public class Wishlist {
         public Builder setName(String name) { this.name = name; return this; }
         public Builder setItems(List<WishlistItem> items) { this.items = items; return this; }
 
+        public Builder copy(Wishlist wishlist){
+            this.wishlistId = wishlist.wishlistId;
+            this.studentId = wishlist.studentId;
+            this.createdAt = wishlist.createdAt;
+            this.name = wishlist.name;
+            this.items = wishlist.items;
+            return this;
+        }
         public Wishlist build() { return new Wishlist(this); }
     }
 }

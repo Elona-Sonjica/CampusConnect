@@ -20,7 +20,7 @@ public class Cart {
         this.createdAt = builder.createdAt;
         this.updatedAt = builder.updatedAt;
         this.totalAmount = builder.totalAmount;
-        this.items = builder.items != null ? builder.items : new ArrayList<>();
+        this.items = builder.items;
     }
 
     // Getters
@@ -37,16 +37,16 @@ public class Cart {
                 "cartId=" + cartId +
                 ", studentId=" + studentId +
                 ", totalAmount=" + totalAmount +
-                ", itemsCount=" + (items != null ? items.size() : 0) +
+                ", itemsCount=" + items  +
                 '}';
     }
 
     public static class Builder {
         private Long cartId;
         private Long studentId;
-        private LocalDateTime createdAt = LocalDateTime.now();
-        private LocalDateTime updatedAt = LocalDateTime.now();
-        private double totalAmount = 0.0;
+        private LocalDateTime createdAt;
+        private LocalDateTime updatedAt;
+        private double totalAmount;
         private List<CartItem> items;
 
         public Builder setCartId(Long cartId) { this.cartId = cartId; return this; }
@@ -56,6 +56,15 @@ public class Cart {
         public Builder setTotalAmount(double totalAmount) { this.totalAmount = totalAmount; return this; }
         public Builder setItems(List<CartItem> items) { this.items = items; return this; }
 
+        public Builder copy(Cart cart){
+            this.cartId = cart.cartId;
+            this.studentId = cart.studentId;
+            this.createdAt = cart.createdAt;
+            this.updatedAt = cart.updatedAt;
+            this.totalAmount = cart.totalAmount;
+            this.items = cart.items;
+            return this;
+        }
         public Cart build() { return new Cart(this); }
     }
 }

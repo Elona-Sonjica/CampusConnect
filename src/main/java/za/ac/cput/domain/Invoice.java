@@ -58,6 +58,16 @@ public class Invoice {
         public Builder setTotal(double total) { this.total = total; return this; }
         public Builder setPaymentTerms(String paymentTerms) { this.paymentTerms = paymentTerms; return this; }
 
+        public Builder copy(Invoice invoice){
+            this.invoiceNumber = invoice.invoiceNumber;
+            this.issueDate = invoice.issueDate;
+            this.dueDate = invoice.dueDate;
+            this.items = invoice.items;
+            this.tax = invoice.tax;
+            this.total = invoice.total;
+            this.paymentTerms = invoice.paymentTerms;
+            return this;
+        }
         public Invoice build() { return new Invoice(this); }
     }
 }

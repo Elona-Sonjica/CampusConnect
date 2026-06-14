@@ -23,44 +23,7 @@ public class DeliveryEligibilityChecker {
     public List<String> getEligiblePrivateAccommodations() { return eligiblePrivateAccommodations; }
     public double getMaxDeliveryRadiusKm() { return maxDeliveryRadiusKm; }
 
-    public DeliveryEligibility checkStudentEligibility(Student student) {
-        if (student == null) {
-            return DeliveryEligibility.NOT_ELIGIBLE;
-        }
 
-        // Check if student lives in eligible residence
-        if (student.getAccommodationType() == AccommodationType.CPUT_RESIDENCE) {
-            if (eligibleResidences != null && eligibleResidences.contains(student.getRegisteredAddress())) {
-                return DeliveryEligibility.CPUT_RESIDENCE;
-            }
-        }
-
-        // Check if student lives in eligible private accommodation
-        if (student.getAccommodationType() == AccommodationType.REGISTERED_ACCOMMODATION) {
-            if (eligiblePrivateAccommodations != null &&
-                    eligiblePrivateAccommodations.contains(student.getRegisteredAddress())) {
-                return DeliveryEligibility.CPUT_RESIDENCE;
-            }
-        }
-
-        return DeliveryEligibility.NOT_ELIGIBLE;
-    }
-
-    public DeliveryEligibility checkAddressEligibility(Address address, Location campusLocation) {
-        if (address == null || campusLocation == null) {
-            return DeliveryEligibility.NOT_ELIGIBLE;
-        }
-
-        Location addressLocation = new Location.Builder()
-                .setAddress(address.getFullAddress())
-                .build();
-
-        if (addressLocation.isWithinRadius(campusLocation, maxDeliveryRadiusKm)) {
-            return DeliveryEligibility.CPUT_RESIDENCE;
-        }
-
-        return DeliveryEligibility.NOT_ELIGIBLE;
-    }
 
     @Override
     public String toString() {
@@ -84,6 +47,13 @@ public class DeliveryEligibilityChecker {
         }
         public Builder setMaxDeliveryRadiusKm(double maxDeliveryRadiusKm) { this.maxDeliveryRadiusKm = maxDeliveryRadiusKm; return this; }
 
+        public Builder copy(DeliveryEligibilityChecker deliveryEligibilityChecker){
+            this.checkerId = deliveryEligibilityChecker.checkerId;
+            this.eligibleResidences = deliveryEligibilityChecker.eligibleResidences;
+            this.eligiblePrivateAccommodations = deliveryEligibilityChecker.eligiblePrivateAccommodations;
+            this.maxDeliveryRadiusKm = deliveryEligibilityChecker.maxDeliveryRadiusKm;
+            return this;
+        }
         public DeliveryEligibilityChecker build() { return new DeliveryEligibilityChecker(this); }
     }
 }

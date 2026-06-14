@@ -37,7 +37,7 @@ public class Message {
         return "Message{" +
                 "messageId=" + messageId +
                 ", senderId=" + senderId +
-                ", content='" + (content != null ? content.substring(0, Math.min(50, content.length())) : "null") + '\'' +
+                ", content='" + content +
                 ", timestamp=" + timestamp +
                 '}';
     }
@@ -47,9 +47,9 @@ public class Message {
         private Long chatRoomId;
         private Long senderId;
         private String content;
-        private LocalDateTime timestamp = LocalDateTime.now();
-        private boolean isRead = false;
-        private boolean isDeleted = false;
+        private LocalDateTime timestamp;
+        private boolean isRead;
+        private boolean isDeleted;
 
         public Builder setMessageId(Long messageId) { this.messageId = messageId; return this; }
         public Builder setChatRoomId(Long chatRoomId) { this.chatRoomId = chatRoomId; return this; }
@@ -59,6 +59,16 @@ public class Message {
         public Builder setIsRead(boolean isRead) { this.isRead = isRead; return this; }
         public Builder setIsDeleted(boolean isDeleted) { this.isDeleted = isDeleted; return this; }
 
+        public Builder copy(Message message){
+            this.messageId = message.messageId;
+            this.chatRoomId = message.chatRoomId;
+            this.senderId = message.senderId;
+            this.content = message.content;
+            this.timestamp = message.timestamp;
+            this.isRead = message.isRead;
+            this.isDeleted = message.isDeleted;
+            return this;
+        }
         public Message build() { return new Message(this); }
     }
 }

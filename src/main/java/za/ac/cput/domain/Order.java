@@ -85,6 +85,21 @@ public class Order {
         public Builder setDelivery(Delivery delivery) { this.delivery = delivery; return this; }
         public Builder setReceipt(Receipt receipt) { this.receipt = receipt; return this; }
 
+        public Builder copy(Order order){
+            this.orderId = order.orderId;
+            this.buyerId = order.buyerId;
+            this.orderReference = order.orderReference;
+            this.orderDate = order.orderDate;
+            this.totalAmount = order.totalAmount;
+            this.status = order.status;
+            this.specialInstructions = order.specialInstructions;
+            this.completedDate = order.completedDate;
+            this.orderItems = order.orderItems;
+            this.payment = order.payment;
+            this.delivery = order.delivery;
+            this.receipt = order.receipt;
+            return this;
+        }
         public Order build() { return new Order(this); }
     }
 }

@@ -59,6 +59,16 @@ public class RefundRequest {
         public Builder setRequestDate(LocalDateTime requestDate) { this.requestDate = requestDate; return this; }
         public Builder setProcessedDate(LocalDateTime processedDate) { this.processedDate = processedDate; return this; }
 
+        public Builder copy(RefundRequest refundRequest){
+            this.refundId = refundRequest.refundId;
+            this.orderId = refundRequest.orderId;
+            this.reason = refundRequest.reason;
+            this.refundAmount = refundRequest.refundAmount;
+            this.status = refundRequest.status;
+            this.requestDate = refundRequest.requestDate;
+            this.processedDate = refundRequest.processedDate;
+            return this;
+        }
         public RefundRequest build() { return new RefundRequest(this); }
     }
 }

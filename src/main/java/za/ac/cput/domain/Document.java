@@ -44,13 +44,7 @@ public class Document {
     public LocalDateTime getVerificationDate() { return verificationDate; }
     public LocalDateTime getExpiryDate() { return expiryDate; }
 
-    public boolean isVerified() {
-        return approvalStatus == ApprovalStatus.APPROVED;
-    }
 
-    public ApprovalStatus getVerificationStatus() {
-        return approvalStatus;
-    }
 
     @Override
     public String toString() {
@@ -87,6 +81,20 @@ public class Document {
         public Builder setVerificationDate(LocalDateTime verificationDate) { this.verificationDate = verificationDate; return this; }
         public Builder setExpiryDate(LocalDateTime expiryDate) { this.expiryDate = expiryDate; return this; }
 
+        public Builder copy(Document document){
+            this.documentId = document.documentId;
+            this.studentId = document.studentId;
+            this.type = document.type;
+            this.fileUrl = document.fileUrl;
+            this.fileName = document.fileName;
+            this.fileSize = document.fileSize;
+            this.uploadDate = document.uploadDate;
+            this.approvalStatus = document.approvalStatus;
+            this.verifiedBy = document.verifiedBy;
+            this.verificationDate = document.verificationDate;
+            this.expiryDate = document.expiryDate;
+            return this;
+        }
         public Document build() { return new Document(this); }
     }
 }

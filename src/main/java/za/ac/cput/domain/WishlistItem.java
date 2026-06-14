@@ -53,6 +53,15 @@ public class WishlistItem {
         public Builder setNotifyOnPriceDrop(boolean notifyOnPriceDrop) { this.notifyOnPriceDrop = notifyOnPriceDrop; return this; }
         public Builder setTargetPrice(Double targetPrice) { this.targetPrice = targetPrice; return this; }
 
+        public Builder copy(WishlistItem wishlistItem){
+            this.wishlistItemId = wishlistItem.wishlistItemId;
+            this.wishlistId = wishlistItem.wishlistId;
+            this.productId = wishlistItem.productId;
+            this.dateAdded = wishlistItem.dateAdded;
+            this.notifyOnPriceDrop = wishlistItem.notifyOnPriceDrop;
+            this.targetPrice = wishlistItem.targetPrice;
+            return this;
+        }
         public WishlistItem build() { return new WishlistItem(this); }
     }
 }

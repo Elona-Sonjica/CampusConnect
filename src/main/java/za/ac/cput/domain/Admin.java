@@ -72,7 +72,7 @@ public class Admin extends User {
         public Builder setPermissions(List<String> permissions) { this.permissions = permissions; return this; }
 
 
-        public Builder self(Admin admin) {
+        public Builder copy(Admin admin) {
             this.userId = admin.userId;
             this.firstName = admin.firstName;
             this.lastName = admin.lastName;

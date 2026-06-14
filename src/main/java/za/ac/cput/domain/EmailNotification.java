@@ -64,6 +64,17 @@ public class EmailNotification {
         public Builder setSentDate(LocalDateTime sentDate) { this.sentDate = sentDate; return this; }
         public Builder setEmailType(String emailType) { this.emailType = emailType; return this; }
 
+        public Builder copy(EmailNotification emailNotification){
+            this.emailId = emailNotification.emailId;
+            this.recipientEmail = emailNotification.recipientEmail;
+            this.subject = emailNotification.subject;
+            this.body = emailNotification.body;
+            this.attachmentUrl = emailNotification.attachmentUrl;
+            this.isSent = emailNotification.isSent;
+            this.sentDate = emailNotification.sentDate;
+            this.emailType = emailNotification.emailType;
+            return this;
+        }
         public EmailNotification build() { return new EmailNotification(this); }
     }
 }

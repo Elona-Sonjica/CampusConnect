@@ -65,6 +65,17 @@ public class Payment {
         public Builder setPaymentDate(LocalDateTime paymentDate) { this.paymentDate = paymentDate; return this; }
         public Builder setReceiptUrl(String receiptUrl) { this.receiptUrl = receiptUrl; return this; }
 
+        public Builder copy(Payment payment){
+            this.paymentId = payment.paymentId;
+            this.orderId = payment.orderId;
+            this.transactionId = payment.transactionId;
+            this.amount = payment.amount;
+            this.method = payment.method;
+            this.status = payment.status;
+            this.paymentDate = payment.paymentDate;
+            this.receiptUrl = payment.receiptUrl;
+            return this;
+        }
         public Payment build() { return new Payment(this); }
     }
 }

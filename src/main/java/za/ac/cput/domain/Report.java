@@ -65,6 +65,17 @@ public class Report {
         public Builder setParameters(Map<String, Object> parameters) { this.parameters = parameters; return this; }
         public Builder setFilters(List<ReportFilter> filters) { this.filters = filters; return this; }
 
+        public Builder copy(Report report){
+            this.reportId = report.reportId;
+            this.reportType = report.reportType;
+            this.generatedDate = report.generatedDate;
+            this.generatedBy = report.generatedBy;
+            this.data = report.data;
+            this.format = report.format;
+            this.parameters = report.parameters;
+            this.filters = report.filters;
+            return this;
+        }
         public Report build() { return new Report(this); }
     }
 }

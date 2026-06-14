@@ -54,6 +54,15 @@ public class DeliveryTracking {
         public Builder setTimestamp(LocalDateTime timestamp) { this.timestamp = timestamp; return this; }
         public Builder setDescription(String description) { this.description = description; return this; }
 
+        public Builder copy(DeliveryTracking deliveryTracking){
+            this.trackingId = deliveryTracking.trackingId;
+            this.deliveryId = deliveryTracking.deliveryId;
+            this.status = deliveryTracking.status;
+            this.location = deliveryTracking.location;
+            this.timestamp = deliveryTracking.timestamp;
+            this.description = deliveryTracking.description;
+            return this;
+        }
         public DeliveryTracking build() { return new DeliveryTracking(this); }
     }
 }

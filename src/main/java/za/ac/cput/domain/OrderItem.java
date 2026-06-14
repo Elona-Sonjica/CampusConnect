@@ -51,6 +51,14 @@ public class OrderItem {
         public Builder setQuantity(int quantity) { this.quantity = quantity; return this; }
         public Builder setPriceAtPurchase(double priceAtPurchase) { this.priceAtPurchase = priceAtPurchase; return this; }
 
+        public Builder copy(OrderItem orderItem){
+            this.orderItemId = orderItem.orderItemId;
+            this.orderId = orderItem.orderId;
+            this.productId = orderItem.productId;
+            this.quantity = orderItem.quantity;
+            this.priceAtPurchase = orderItem.priceAtPurchase;
+            return this;
+        }
         public OrderItem build() { return new OrderItem(this); }
     }
 }

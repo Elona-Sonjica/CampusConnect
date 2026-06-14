@@ -48,6 +48,14 @@ public class Receipt {
         public Builder setPaymentMethod(String paymentMethod) { this.paymentMethod = paymentMethod; return this; }
         public Builder setTransactionId(String transactionId) { this.transactionId = transactionId; return this; }
 
+        public Builder copy(Receipt receipt){
+            this.receiptNumber = receipt.receiptNumber;
+            this.receiptDate = receipt.receiptDate;
+            this.amount = receipt.amount;
+            this.paymentMethod = receipt.paymentMethod;
+            this.transactionId = receipt.transactionId;
+            return this;
+        }
         public Receipt build() { return new Receipt(this); }
     }
 }

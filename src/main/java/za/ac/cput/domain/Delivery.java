@@ -69,6 +69,18 @@ public class Delivery {
         public Builder setTrackingNumber(String trackingNumber) { this.trackingNumber = trackingNumber; return this; }
         public Builder setDeliveryFee(double deliveryFee) { this.deliveryFee = deliveryFee; return this; }
 
+        public Builder copy(Delivery delivery){
+            this.deliveryId = delivery.deliveryId;
+            this.orderId = delivery.orderId;
+            this.method = delivery.method;
+            this.collectionPoint = delivery.collectionPoint;
+            this.deliveryAddress = delivery.deliveryAddress;
+            this.scheduledDate = delivery.scheduledDate;
+            this.deliveredDate = delivery.deliveredDate;
+            this.trackingNumber = delivery.trackingNumber;
+            this.deliveryFee = delivery.deliveryFee;
+            return this;
+        }
         public Delivery build() { return new Delivery(this); }
     }
 }

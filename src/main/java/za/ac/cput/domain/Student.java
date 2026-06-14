@@ -11,7 +11,6 @@ public class Student extends User {
     private double buyerRating;
     private int totalSales;
     private int totalPurchases;
-    private LanguageType preferredLanguage;
     private AccommodationType accommodationType;
     private String registeredAddress;
     private boolean isDeliveryEligible;
@@ -35,7 +34,6 @@ public class Student extends User {
         this.buyerRating = builder.buyerRating;
         this.totalSales = builder.totalSales;
         this.totalPurchases = builder.totalPurchases;
-        this.preferredLanguage = builder.preferredLanguage;
         this.accommodationType = builder.accommodationType;
         this.registeredAddress = builder.registeredAddress;
         this.isDeliveryEligible = builder.isDeliveryEligible;
@@ -57,7 +55,6 @@ public class Student extends User {
     public double getBuyerRating() { return buyerRating; }
     public int getTotalSales() { return totalSales; }
     public int getTotalPurchases() { return totalPurchases; }
-    public LanguageType getPreferredLanguage() { return preferredLanguage; }
     public AccommodationType getAccommodationType() { return accommodationType; }
     public String getRegisteredAddress() { return registeredAddress; }
     public boolean isDeliveryEligible() { return isDeliveryEligible; }
@@ -101,7 +98,6 @@ public class Student extends User {
         private double buyerRating;
         private int totalSales;
         private int totalPurchases;
-        private LanguageType preferredLanguage;
         private AccommodationType accommodationType;
         private String registeredAddress;
         private boolean isDeliveryEligible;
@@ -130,7 +126,6 @@ public class Student extends User {
         public Builder setBuyerRating(double buyerRating) { this.buyerRating = buyerRating; return this; }
         public Builder setTotalSales(int totalSales) { this.totalSales = totalSales; return this; }
         public Builder setTotalPurchases(int totalPurchases) { this.totalPurchases = totalPurchases; return this; }
-        public Builder setPreferredLanguage(LanguageType preferredLanguage) { this.preferredLanguage = preferredLanguage; return this; }
         public Builder setAccommodationType(AccommodationType accommodationType) { this.accommodationType = accommodationType; return this; }
         public Builder setRegisteredAddress(String registeredAddress) { this.registeredAddress = registeredAddress; return this; }
         public Builder setIsDeliveryEligible(boolean isDeliveryEligible) { this.isDeliveryEligible = isDeliveryEligible; return this; }
@@ -144,7 +139,7 @@ public class Student extends User {
         public Builder setChatRooms(List<ChatRoom> chatRooms) { this.chatRooms = chatRooms; return this; }
 
 
-        public Builder self(Student student) {
+        public Builder copy(Student student) {
             this.userId = student.userId;
             this.firstName = student.firstName;
             this.lastName = student.lastName;
@@ -161,7 +156,6 @@ public class Student extends User {
             this.buyerRating = student.buyerRating;
             this.totalSales = student.totalSales;
             this.totalPurchases = student.totalPurchases;
-            this.preferredLanguage = student.preferredLanguage;
             this.accommodationType = student.accommodationType;
             this.registeredAddress = student.registeredAddress;
             this.isDeliveryEligible = student.isDeliveryEligible;
