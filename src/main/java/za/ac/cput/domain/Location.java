@@ -23,30 +23,7 @@ public class Location {
     public String getAddress() { return address; }
     public LocalDateTime getTimestamp() { return timestamp; }
 
-    // Haversine formula for distance calculation between two points in kilometers
-    public double calculateDistance(Location to) {
-        final int EARTH_RADIUS_KM = 6371;
 
-        double lat1 = Math.toRadians(this.latitude);
-        double lat2 = Math.toRadians(to.latitude);
-        double lon1 = Math.toRadians(this.longitude);
-        double lon2 = Math.toRadians(to.longitude);
-
-        double dlat = lat2 - lat1;
-        double dlon = lon2 - lon1;
-
-        double a = Math.sin(dlat / 2) * Math.sin(dlat / 2) +
-                Math.cos(lat1) * Math.cos(lat2) *
-                        Math.sin(dlon / 2) * Math.sin(dlon / 2);
-
-        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-        return EARTH_RADIUS_KM * c;
-    }
-
-    public boolean isWithinRadius(Location center, double radius) {
-        return calculateDistance(center) <= radius;
-    }
 
     @Override
     public String toString() {
@@ -68,6 +45,13 @@ public class Location {
         public Builder setAddress(String address) { this.address = address; return this; }
         public Builder setTimestamp(LocalDateTime timestamp) { this.timestamp = timestamp; return this; }
 
+        public Builder copy(Location location){
+            this.latitude = location.latitude;
+            this.longitude = location.longitude;
+            this.address = location.address;
+            this.timestamp = location.timestamp;
+            return this;
+        }
         public Location build() { return new Location(this); }
     }
 }

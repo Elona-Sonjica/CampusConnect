@@ -24,9 +24,7 @@ public class CartItem {
     public int getQuantity() { return quantity; }
     public double getPriceAtAdd() { return priceAtAdd; }
 
-    public double calculateSubtotal() {
-        return quantity * priceAtAdd;
-    }
+
 
     @Override
     public String toString() {
@@ -34,7 +32,6 @@ public class CartItem {
                 "cartItemId=" + cartItemId +
                 ", productId=" + productId +
                 ", quantity=" + quantity +
-                ", subtotal=" + calculateSubtotal() +
                 '}';
     }
 
@@ -50,6 +47,15 @@ public class CartItem {
         public Builder setProductId(Long productId) { this.productId = productId; return this; }
         public Builder setQuantity(int quantity) { this.quantity = quantity; return this; }
         public Builder setPriceAtAdd(double priceAtAdd) { this.priceAtAdd = priceAtAdd; return this; }
+
+        public Builder copy(CartItem cartItem){
+            this.cartItemId = cartItem.cartItemId;
+            this.cartId = cartItem.cartId;
+            this.productId = cartItem.productId;
+            this.quantity = cartItem.quantity;
+            this.priceAtAdd = cartItem.priceAtAdd;
+            return this;
+        }
 
         public CartItem build() { return new CartItem(this); }
     }

@@ -42,6 +42,13 @@ public class BookingConfirmation {
         public Builder setConfirmationTime(LocalDateTime confirmationTime) { this.confirmationTime = confirmationTime; return this; }
         public Builder setTermsAndConditions(String termsAndConditions) { this.termsAndConditions = termsAndConditions; return this; }
 
+        public Builder copy(BookingConfirmation bookingConfirmation){
+            this.confirmationNumber = bookingConfirmation.confirmationNumber;
+            this.qrCode = bookingConfirmation.qrCode;
+            this.confirmationTime = bookingConfirmation.confirmationTime;
+            this.termsAndConditions = bookingConfirmation.termsAndConditions;
+            return this;
+        }
         public BookingConfirmation build() { return new BookingConfirmation(this); }
     }
 }

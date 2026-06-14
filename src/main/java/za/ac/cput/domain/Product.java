@@ -72,10 +72,10 @@ public class Product {
         private double price;
         private String condition;
         private List<String> images;
-        private ProductStatus status = ProductStatus.AVAILABLE;
-        private int viewCount = 0;
-        private LocalDateTime dateListed = LocalDateTime.now();
-        private LocalDateTime dateUpdated = LocalDateTime.now();
+        private ProductStatus status;
+        private int viewCount;
+        private LocalDateTime dateListed;
+        private LocalDateTime dateUpdated;
 
         public Builder setProductId(Long productId) { this.productId = productId; return this; }
         public Builder setSellerId(Long sellerId) { this.sellerId = sellerId; return this; }
@@ -90,6 +90,21 @@ public class Product {
         public Builder setDateListed(LocalDateTime dateListed) { this.dateListed = dateListed; return this; }
         public Builder setDateUpdated(LocalDateTime dateUpdated) { this.dateUpdated = dateUpdated; return this; }
 
+        public Builder copy(Product product){
+            this.productId = product.productId;
+            this.sellerId = product.sellerId;
+            this.category = product.category;
+            this.title = product.title;
+            this.description = product.description;
+            this.price = product.price;
+            this.condition = product.condition;
+            this.images = product.images;
+            this.status = product.status;
+            this.viewCount = product.viewCount;
+            this.dateListed = product.dateListed;
+            this.dateUpdated = product.dateUpdated;
+            return this;
+        }
         public Product build() { return new Product(this); }
     }
 }

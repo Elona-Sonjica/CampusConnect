@@ -42,9 +42,7 @@ public class Address {
     public String getPostalCode() { return postalCode; }
     public boolean isDefault() { return isDefault; }
 
-    public String getFullAddress() {
-        return streetNumber + " " + streetName + ", " + suburb + ", " + city + ", " + province + ", " + postalCode;
-    }
+
 
     @Override
     public String toString() {
@@ -84,7 +82,7 @@ public class Address {
         public Builder setPostalCode(String postalCode) { this.postalCode = postalCode; return this; }
         public Builder setIsDefault(boolean isDefault) { this.isDefault = isDefault; return this; }
 
-        public Builder self(Address address){
+        public Builder copy(Address address){
             this.addressId = address.addressId;
             this.studentId = address.studentId;
             this.addressType = address.addressType;

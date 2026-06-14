@@ -64,6 +64,17 @@ public class Notification {
         public Builder setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; return this; }
         public Builder setActionUrl(String actionUrl) { this.actionUrl = actionUrl; return this; }
 
+        public Builder copy(Notification notification){
+            this.notificationId = notification.notificationId;
+            this.recipientId = notification.recipientId;
+            this.type = notification.type;
+            this.title = notification.title;
+            this.message = notification.message;
+            this.isRead = notification.isRead;
+            this.createdAt = notification.createdAt;
+            this.actionUrl = notification.actionUrl;
+            return this;
+        }
         public Notification build() { return new Notification(this); }
     }
 }

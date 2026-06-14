@@ -28,7 +28,7 @@ public class ChatRoom {
         this.isActive = builder.isActive;
         this.studentOneUnreadCount = builder.studentOneUnreadCount;
         this.studentTwoUnreadCount = builder.studentTwoUnreadCount;
-        this.messages = builder.messages != null ? builder.messages : new ArrayList<>();
+        this.messages = builder.messages;
     }
 
     // Getters
@@ -43,14 +43,7 @@ public class ChatRoom {
     public int getStudentTwoUnreadCount() { return studentTwoUnreadCount; }
     public List<Message> getMessages() { return messages; }
 
-    public int getUnreadCount(Long studentId) {
-        if (studentId.equals(studentOneId)) {
-            return studentOneUnreadCount;
-        } else if (studentId.equals(studentTwoId)) {
-            return studentTwoUnreadCount;
-        }
-        return 0;
-    }
+
 
     @Override
     public String toString() {
@@ -65,12 +58,12 @@ public class ChatRoom {
         private Long chatRoomId;
         private Long studentOneId;
         private Long studentTwoId;
-        private LocalDateTime createdAt = LocalDateTime.now();
+        private LocalDateTime createdAt;
         private LocalDateTime lastMessageAt;
         private String lastMessagePreview;
-        private boolean isActive = true;
-        private int studentOneUnreadCount = 0;
-        private int studentTwoUnreadCount = 0;
+        private boolean isActive;
+        private int studentOneUnreadCount;
+        private int studentTwoUnreadCount;
         private List<Message> messages;
 
         public Builder setChatRoomId(Long chatRoomId) { this.chatRoomId = chatRoomId; return this; }
@@ -84,6 +77,19 @@ public class ChatRoom {
         public Builder setStudentTwoUnreadCount(int studentTwoUnreadCount) { this.studentTwoUnreadCount = studentTwoUnreadCount; return this; }
         public Builder setMessages(List<Message> messages) { this.messages = messages; return this; }
 
+        public Builder copy(ChatRoom chatRoom){
+            this.chatRoomId = chatRoom.chatRoomId;
+            this.studentOneId = chatRoom.studentOneId;
+            this.studentTwoId = chatRoom.studentTwoId;
+            this.createdAt = chatRoom.createdAt;
+            this.lastMessageAt = chatRoom.lastMessageAt;
+            this.lastMessagePreview = chatRoom.lastMessagePreview;
+            this.isActive = chatRoom.isActive;
+            this.studentOneUnreadCount = chatRoom.studentOneUnreadCount;
+            this.studentTwoUnreadCount = chatRoom.studentTwoUnreadCount;
+            this.messages = chatRoom.messages;
+            return this;
+        }
         public ChatRoom build() { return new ChatRoom(this); }
     }
 }

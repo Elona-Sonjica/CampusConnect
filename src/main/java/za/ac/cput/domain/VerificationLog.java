@@ -22,7 +22,7 @@ public class VerificationLog {
         this.verificationDate = builder.verificationDate;
         this.status = builder.status;
         this.comments = builder.comments;
-        this.history = builder.history != null ? builder.history : new ArrayList<>();
+        this.history = builder.history;
     }
 
     // Getters
@@ -34,9 +34,6 @@ public class VerificationLog {
     public String getComments() { return comments; }
     public List<VerificationLog> getHistory() { return history; }
 
-    public List<VerificationLog> getVerificationHistory() {
-        return history;
-    }
 
     @Override
     public String toString() {
@@ -65,6 +62,16 @@ public class VerificationLog {
         public Builder setComments(String comments) { this.comments = comments; return this; }
         public Builder setHistory(List<VerificationLog> history) { this.history = history; return this; }
 
+        public Builder copy(VerificationLog verificationLog){
+            this.logId = verificationLog.logId;
+            this.documentId = verificationLog.documentId;
+            this.verifiedBy = verificationLog.verifiedBy;
+            this.verificationDate = verificationLog.verificationDate;
+            this.status = verificationLog.status;
+            this.comments = verificationLog.comments;
+            this.history = verificationLog.history;
+            return this;
+        }
         public VerificationLog build() { return new VerificationLog(this); }
     }
 }

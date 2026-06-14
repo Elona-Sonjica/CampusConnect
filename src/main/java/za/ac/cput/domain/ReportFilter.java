@@ -47,6 +47,14 @@ public class ReportFilter {
         public Builder setOperator(String operator) { this.operator = operator; return this; }
         public Builder setValue(String value) { this.value = value; return this; }
 
+        public Builder copy(ReportFilter reportFilter){
+            this.filterId = reportFilter.filterId;
+            this.reportId = reportFilter.reportId;
+            this.fieldName = reportFilter.fieldName;
+            this.operator = reportFilter.operator;
+            this.value = reportFilter.value;
+            return this;
+        }
         public ReportFilter build() { return new ReportFilter(this); }
     }
 }

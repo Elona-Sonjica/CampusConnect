@@ -50,31 +50,7 @@ public class ReceiptVerification {
     public LocalDateTime getVerificationDate() { return verificationDate; }
     public String getRejectionReason() { return rejectionReason; }
 
-    public boolean compareStudentNumbers() {
-        return enteredStudentNumber != null && enteredStudentNumber.equals(actualStudentNumber);
-    }
 
-    public boolean validateProductImage() {
-        return productImage != null && productImage.isVerified();
-    }
-
-    public boolean validateStudentCard() {
-        return studentCardImage != null && studentCardImage.isVerified();
-    }
-
-    public boolean verifyReceipt() {
-        this.studentNumberMatch = compareStudentNumbers();
-        this.productImageValid = validateProductImage();
-        this.studentCardValid = validateStudentCard();
-
-        if (studentNumberMatch && productImageValid && studentCardValid) {
-            this.status = VerificationStatus.APPROVED_COMPLETED;
-            return true;
-        } else {
-            this.status = VerificationStatus.REJECTED_STUDENT_MISMATCH;
-            return false;
-        }
-    }
 
     @Override
     public String toString() {
@@ -114,6 +90,22 @@ public class ReceiptVerification {
         public Builder setVerificationDate(LocalDateTime verificationDate) { this.verificationDate = verificationDate; return this; }
         public Builder setRejectionReason(String rejectionReason) { this.rejectionReason = rejectionReason; return this; }
 
+        public Builder copy(ReceiptVerification receiptVerification){
+            this.verificationId = receiptVerification.verificationId;
+            this.orderId = receiptVerification.orderId;
+            this.studentId = receiptVerification.studentId;
+            this.productImage = receiptVerification.productImage;
+            this.studentCardImage = receiptVerification.studentCardImage;
+            this.enteredStudentNumber = receiptVerification.enteredStudentNumber;
+            this.actualStudentNumber = receiptVerification.actualStudentNumber;
+            this.studentNumberMatch = receiptVerification.studentNumberMatch;
+            this.productImageValid = receiptVerification.productImageValid;
+            this.studentCardValid = receiptVerification.studentCardValid;
+            this.status = receiptVerification.status;
+            this.verificationDate = receiptVerification.verificationDate;
+            this.rejectionReason = receiptVerification.rejectionReason;
+            return this;
+        }
         public ReceiptVerification build() { return new ReceiptVerification(this); }
     }
 }

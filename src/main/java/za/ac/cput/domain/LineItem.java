@@ -21,9 +21,7 @@ public class LineItem {
     public double getUnitPrice() { return unitPrice; }
     public double getTotal() { return total; }
 
-    public double calculateTotal() {
-        return quantity * unitPrice;
-    }
+
 
     @Override
     public String toString() {
@@ -45,6 +43,13 @@ public class LineItem {
         public Builder setUnitPrice(double unitPrice) { this.unitPrice = unitPrice; return this; }
         public Builder setTotal(double total) { this.total = total; return this; }
 
+        public Builder copy(LineItem lineItem){
+            this.description = lineItem.description;
+            this.quantity = lineItem.quantity;
+            this.unitPrice = lineItem.unitPrice;
+            this.total = lineItem.total;
+            return this;
+        }
         public LineItem build() { return new LineItem(this); }
     }
 }
